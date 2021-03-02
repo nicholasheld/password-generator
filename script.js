@@ -1,21 +1,36 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var lowercase = ["a","b","c","d","e","f","g", "h", "i", "j", "k", "l","m","n","o","p", "q", "r", "s","t", "u","v","w","x","y", "z"]
+var uppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+console.log(lowercase)
+console.log(uppercase)
+
+
+
 function generatePassword() {
  
  
- //generate pswd
- // promt user
+ //1. generate pswd
+ //2. prompt user
  //
- 
- var characters =parseInt(window.prompt("Number of characters: 8-128"));
-  alert("You entererd " + characters);
-  return "password";
-
-}
-//alert for how many characters 8-128)
-//sign = window.prompt('How many characters do you want in your password', 'enter number 8-128', amount);
+ //sign = window.prompt('How many characters do you want in your password', 'enter number 8-128', amount);
 //store the user input on how many characters
+ var characters =parseInt(window.prompt("Number of characters: 8-128", min =8, max =128));
+  alert("You entererd " + characters);  //alert for how many characters 8-128)
+  var lowercase =parseInt(window.alert("Shall we put in lower case letters"));
+  var uppercase =parseInt(window.alert("Shall we put in upper case letters"));
+  //alert("You entererd " + uppercase);
+  return "password";//password gets returned where secure pswd location is
+}
+
+function randomize()  {
+  for (var i=0; i < numberLength; i ++) {
+    var special = Math.floor(Math.random() *(criteria.length));
+    console.log(criteria)
+    randompswd.push(criteria[special]);
+  }
+}
 
 /*function declarelength()  {
 
