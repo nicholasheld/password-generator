@@ -4,10 +4,12 @@ var generateBtn = document.querySelector("#generate");
 var lowercase = ["a","b","c","d","e","f","g", "h", "i", "j", "k", "l","m","n","o","p", "q", "r", "s","t", "u","v","w","x","y", "z"]
 var uppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 var numbers = ['1','2','3','4','5','6','7','8','9','0']
+var symbols = ['!','@','#','$','%','^','&','*','(',')','_','+']
 
 console.log(lowercase)
 console.log(uppercase)
 console.log(numbers)
+console.log(symbols)
 
 
 
@@ -21,9 +23,10 @@ function generatePassword() {
 //store the user input on how many characters
  var characters =parseInt(window.prompt("Number of characters: 8-128", min =8, max =128));
   alert("You entererd " + characters);  //alert for how many characters 8-128)
-  var lowercase =parseInt(window.alert("Shall we put in lower case letters"));
-  var uppercase =parseInt(window.alert("Shall we put in upper case letters"));
-  var numbers =parseInt(window.alert("Shall we put in numbers"));
+  var lowercase =parseInt(window.alert("Shall we include lower case letters"));
+  var uppercase =parseInt(window.alert("Shall we include upper case letters"));
+  var numbers =parseInt(window.alert("Shall we include numbers"));
+  var symbols =parseInt(window.alert("Shall we include sybmols"));
   //alert("You entererd " + uppercase);
   return "password";//password gets returned where secure pswd location is
 }
