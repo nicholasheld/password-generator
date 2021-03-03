@@ -1,10 +1,13 @@
-// Assignment Code
+// Assignment Code - Given line 2
 var generateBtn = document.querySelector("#generate");
 
 var lowercase = ["a","b","c","d","e","f","g", "h", "i", "j", "k", "l","m","n","o","p", "q", "r", "s","t", "u","v","w","x","y", "z"]
 var uppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 var numbers = ['1','2','3','4','5','6','7','8','9','0']
 var symbols = ['!','@','#','$','%','^','&','*','(',')','_','+']
+//var criteria - with all characters in array
+//var length of characters 8-128
+//var passwordresult
 
 console.log(lowercase)
 console.log(uppercase)
@@ -32,22 +35,14 @@ function generatePassword() {
 }
 
 function randomize()  {
-  for (var i=0; i < numberLength; i ++) {
+  for (var i=0; i < length; i ++) {
     var special = Math.floor(Math.random() *(criteria.length));
     console.log(criteria)
     randompswd.push(criteria[special]);
   }
 }
 
-/*function declarelength()  {
-
-  return;
-}*/
-//declarelength();
-//sign = window.prompt('Do you want to include character types like lower case, upper case, numbers and symbols', 'no');
-//store if say yes to these. assume yes. math.random() for all the different types
-
-// Write password to the #password input
+// Write password to the #password input - Given
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -56,7 +51,7 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+// Add event listener to generate button - Given
 generateBtn.addEventListener("click", writePassword);
 //display password on button click
 
