@@ -7,28 +7,39 @@ var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 var symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+']
 //var length of characters 8-128
 //var criteria - concat lowercase, uppercase, numbers, and symbols? >randomize
-//var passwordresult
+var array = []
+var pwdOptions
 
 console.log(lowercase)
 console.log(uppercase)
 console.log(numbers)
 console.log(symbols)
 
+//var all = [lowercase], [uppercase], [numbers], [symbols];
+//var array = all.concat(lowercase, uppercase, numbers, symbols);
+//console.log(array);
+uppercase = uppercase.concat(lowercase)
+uppercase = uppercase.concat(numbers)
+uppercase = uppercase.concat(symbols)
+console.log(uppercase)
+
+
+
 function passwordOptions() {
-  var passwordLength = parseInt(prompt("how many characters would you like in the password?"))
+  var passwordLength = parseInt(prompt("How many characters would you like in the password?"))
 
   if (passwordLength < 8 || passwordLength > 128) {
     alert("Password length must be between 8 and 128 characters")
     return;
   }
 
-  var hasSpecial = confirm("Click Okay to confirm special characters")
+  var hasSpecial = confirm("Click kay to confirm special characters")
 
   var hasNumbers = confirm("Click okay to include numbers")
 
-  var hasUpper = confirm("Click to include Uppercase letters")
+  var hasUpper = confirm("Click okay to include Uppercase letters")
 
-  var hasLower = confirm("Click to include lowercase letters")
+  var hasLower = confirm("Click okay to include lowercase letters")
 
   if (hasSpecial === false &&
     hasNumbers === false &&
@@ -38,6 +49,23 @@ function passwordOptions() {
     return;
   }
 
+  if (hasSpecial) {
+    array = array.concat[symbols]
+  }
+
+  if (hasNumbers) {
+    array = array.concat[numbers]
+  }
+
+  if (hasUpper) {
+    array = array.concat[uppercase]
+  }
+
+  if (hasLower) {
+    array = array.concat[lowercase]
+  }
+
+  console.log(array)
   //{} represent object
   var pwdOptions = {
     pwdLength: passwordLength,
@@ -58,15 +86,19 @@ function generatePassword() {
 }
 
 
-function getRandom(array) {
-  var randomIndex = Math.floor(Math.random() * array.length)
-  var randomElement = array[randomIndex]
-  return randomElement
+function generatePassword(characters, pwdLength) {
+  for (i = 0; i < pwdLength; i++) {
+    var randomIndex = Math.floor(Math.random() * characters.length)
+    var randomElement = characters[randomIndex]
+
+    return randomElement
+
+  }
 }
 
 // Write password to the #password input - Given
 function writePassword() {
-  var password = generatePassword();
+  var password = generatePassword(array, pwdOptions);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
