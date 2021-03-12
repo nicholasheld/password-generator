@@ -1,6 +1,5 @@
 // Assignment Code - Given line 2
 var generateBtn = document.querySelector("#generate");
-
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
@@ -9,38 +8,28 @@ var symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+']
 //var criteria - concat lowercase, uppercase, numbers, and symbols? >randomize
 var array = []
 var pwdOptions
-
-console.log(lowercase)
-console.log(uppercase)
-console.log(numbers)
-console.log(symbols)
-
-//var all = [lowercase], [uppercase], [numbers], [symbols];
-//var array = all.concat(lowercase, uppercase, numbers, symbols);
-//console.log(array);
-uppercase = uppercase.concat(lowercase)
-uppercase = uppercase.concat(numbers)
-uppercase = uppercase.concat(symbols)
-console.log(uppercase)
-
-
-
+//This was a check for outputs
+//console.log(lowercase)//console.log(uppercase)
+//console.log(numbers)
+//console.log(symbols)
+//prompts for the user
 function passwordOptions() {
   var passwordLength = parseInt(prompt("How many characters would you like in the password?"))
 
   if (passwordLength < 8 || passwordLength > 128) {
     alert("Password length must be between 8 and 128 characters")
+    console.log(passwordLength);
     return;
   }
 
-  var hasSpecial = confirm("Click kay to confirm special characters")
+  var hasSpecial = confirm("Click okay to include special characters")
 
   var hasNumbers = confirm("Click okay to include numbers")
 
   var hasUpper = confirm("Click okay to include Uppercase letters")
 
   var hasLower = confirm("Click okay to include lowercase letters")
-
+//ensures that the user selected atlest one element
   if (hasSpecial === false &&
     hasNumbers === false &&
     hasUpper === false &&
@@ -49,24 +38,8 @@ function passwordOptions() {
     return;
   }
 
-  if (hasSpecial) {
-    array = array.concat[symbols]
-  }
-
-  if (hasNumbers) {
-    array = array.concat[numbers]
-  }
-
-  if (hasUpper) {
-    array = array.concat[uppercase]
-  }
-
-  if (hasLower) {
-    array = array.concat[lowercase]
-  }
-
   console.log(array)
-  //{} represent object
+  //object with key values pairs of user slections
   var pwdOptions = {
     pwdLength: passwordLength,
     special: hasSpecial,
@@ -75,30 +48,55 @@ function passwordOptions() {
     lower: hasLower
   }
 
-  console.log(pwdOptions)
+  //console.log(pwdOptions)
   return pwdOptions;
 
 }
-
+//This gets a random element from the array
+function getRandomElement(array) {
+  var randomIndex = Math.floor(Math.random() * array.length)
+  var randomElement = array[randomIndex]
+  return randomElement
+}
+//this function generates the password options depending on user selection and input
 function generatePassword() {
   var options = passwordOptions()
+  var result= []
+  var possibleCharacters = []
+  var guaranteedCharacters = []
 
+if(options.special)  {
+  possibleCharacters = possibleCharacters.concat(symbols)
+  guaranteedCharacters.push(getRandomElement(symbols))
 }
-
-
-function generatePassword(characters, pwdLength) {
-  for (i = 0; i < pwdLength; i++) {
-    var randomIndex = Math.floor(Math.random() * characters.length)
-    var randomElement = characters[randomIndex]
-
-    return randomElement
-
-  }
+if(options.numbers)  {
+  possibleCharacters = possibleCharacters.concat(numbers)
+  guaranteedCharacters.push(getRandomElement(numbers))
+}
+if(options.lower)  {
+  possibleCharacters = possibleCharacters.concat(lowercase)
+  guaranteedCharacters.push(getRandomElement(lowercase))
+}
+if(options.upper)  {
+  possibleCharacters = possibleCharacters.concat(uppercase)
+  guaranteedCharacters.push(getRandomElement(uppercase))
+}
+//this gets a random character from our concated array for the length of that array
+for(var i = 0; i < options.pwdLength; i++){
+  var possibleChar = getRandomElement(possibleCharacters)
+  result.push(possibleChar)
+}
+//esure we have all elements user selected and loop the length the user determined, for example if we said yes to special that it will have a special
+for(var i =0; i < guaranteedCharacters.length; i++) {
+result[i] = guaranteedCharacters[i]
+}
+//this joins the generated characters with the ensured ones 
+return result.join("")
 }
 
 // Write password to the #password input - Given
 function writePassword() {
-  var password = generatePassword(array, pwdOptions);
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;

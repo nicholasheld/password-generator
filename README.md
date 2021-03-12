@@ -16,5 +16,9 @@ Github: https://nicholasheld.github.io/password-generator/
 
 Repo: https://github.com/nicholasheld/password-generator
 
-Screenshot of site: There is a screenshot of the site in the Assets folder labeled screenshot.png
+Screenshots of site: 
+https://github.com/nicholasheld/password-generator/blob/main/Assets/Screenshot.PNG
+https://github.com/nicholasheld/password-generator/blob/main/Assets/03-javascript-homework-demo.png
+![image](assets/screenshot.png)
+These are screenshots of the site in the Assets folder labeled screenshot.png
 
